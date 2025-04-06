@@ -16,6 +16,8 @@ from PyPDF2 import PdfReader
 from io import BytesIO
 # Load spaCy English model
 
+import spacy
+from spacy.cli import download
 
 try:
     nlp = spacy.load("en_core_web_sm")
