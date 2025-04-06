@@ -15,7 +15,13 @@ from fpdf import FPDF  # For PDF export
 from PyPDF2 import PdfReader
 from io import BytesIO
 # Load spaCy English model
-nlp = spacy.load("en_core_web_sm")
+
+
+try:
+    nlp = spacy.load("en_core_web_sm")
+except OSError:
+    download("en_core_web_sm")
+    nlp = spacy.load("en_core_web_sm")
 
 
 
