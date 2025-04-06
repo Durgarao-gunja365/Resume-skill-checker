@@ -149,24 +149,6 @@ def generate_pdf_report(matched_skills, missing_skills, score, years):
 
 # Resume processor with enhancements
 
-def generate_ai_suggestions(resume_text, job_description):
-    prompt = f"""
-    Given this resume:\n{resume_text}\n
-    And this job description:\n{job_description}\n
-    Suggest:
-    1. 3 missing technical skills
-    2. Improvements in resume phrasing
-    3. Recommended certifications
-    4. A tailored summary statement
-    """
-
-    response = openai.ChatCompletion.create(
-        model="gpt-4",
-        messages=[{"role": "user", "content": prompt}],
-        temperature=0.7
-    )
-
-    return response.choices[0].message["content"]
 def process_resume(uploaded_file, filename, job_skills):
     with st.spinner("Analyzing resume..."):
         with tempfile.NamedTemporaryFile(delete=False, suffix=os.path.splitext(filename)[1]) as tmp_file:
